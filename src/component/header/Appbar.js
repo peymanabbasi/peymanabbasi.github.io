@@ -6,11 +6,12 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import {AppBar} from "@material-ui/core";
-import '../../assets/css/styleTab.css';
 import CropOriginalIcon from '@material-ui/icons/CropOriginal';
 import OndemandVideoOutlinedIcon from '@material-ui/icons/OndemandVideoOutlined';
 import BookOutlinedIcon from '@material-ui/icons/BookOutlined';
 import ArtTrackOutlinedIcon from '@material-ui/icons/ArtTrackOutlined';
+
+import '../../assets/css/styleTab.css';
 import MoreIcon from './MoreIcon'
 import Content from "../content/content";
 const Appbar = (props) => {
@@ -64,17 +65,30 @@ const useStyles = makeStyles((theme) => ({
         minHeight:'48px !important',
         minWidth:'max-content',
         textTransform:'none',
+        '@media (max-width:900px)': {
+           padding:'6px 3px'
+        },
     },
     tabSelected:{
         color:'#1a73e8 !important',
+        '@media (max-width:600px)': {
+            color:'#202124 !important',
+        },
     },
     tabs:{
         marginLeft:'15%',
+        '@media (max-width:900px)': {
+            marginLeft:'5%',
+        },
     },
     iconTab:{
         marginRight:'5px',
         width:'16px',
-        height:'16px'
+        height:'16px',
+        '@media (max-width:900px)': {
+            width:'0px',
+            height:'0px',
+        },
     }
 }));
 
@@ -99,7 +113,7 @@ export default function ScrollableTabsButtonAuto() {
                     aria-label="scrollable auto tabs example"
                     classes={{root:classes.tabs}}
                 >
-                    <Tab classes={{selected:classes.tabSelected,wrapper:classes.wrapper,root:classes.tabRoot}} label="All" icon={<svg style={{marginRight:'5px'} }  width={'16px'} height={'16px'} focusable="false" viewBox="0 0 24 24"><path fill="#34a853" d="M10 2v2a6 6 0 0 1 6 6h2a8 8 0 0 0-8-8"></path><path fill="#ea4335" d="M10 4V2a8 8 0 0 0-8 8h2c0-3.3 2.7-6 6-6"></path><path fill="#fbbc04" d="M4 10H2a8 8 0 0 0 8 8v-2c-3.3 0-6-2.69-6-6"></path><path fill="#4285f4" d="M22 20.59l-5.69-5.69A7.96 7.96 0 0 0 18 10h-2a6 6 0 0 1-6 6v2c1.85 0 3.52-.64 4.88-1.68l5.69 5.69L22 20.59"></path></svg>} {...a11yProps(0)} />
+                    <Tab classes={{selected:classes.tabSelected,wrapper:classes.wrapper,root:classes.tabRoot}} label="All" icon={<svg className={classes.iconTab}  width={'16px'} height={'16px'} focusable="false" viewBox="0 0 24 24"><path fill="#34a853" d="M10 2v2a6 6 0 0 1 6 6h2a8 8 0 0 0-8-8"></path><path fill="#ea4335" d="M10 4V2a8 8 0 0 0-8 8h2c0-3.3 2.7-6 6-6"></path><path fill="#fbbc04" d="M4 10H2a8 8 0 0 0 8 8v-2c-3.3 0-6-2.69-6-6"></path><path fill="#4285f4" d="M22 20.59l-5.69-5.69A7.96 7.96 0 0 0 18 10h-2a6 6 0 0 1-6 6v2c1.85 0 3.52-.64 4.88-1.68l5.69 5.69L22 20.59"></path></svg>} {...a11yProps(0)} />
                     <Tab classes={{selected:classes.tabSelected,wrapper:classes.wrapper,root:classes.tabRoot}} label="Images" {...a11yProps(1)} icon={<CropOriginalIcon className={classes.iconTab}/>} />
                     <Tab classes={{selected:classes.tabSelected,wrapper:classes.wrapper,root:classes.tabRoot}} label="Video" {...a11yProps(2)} icon={<OndemandVideoOutlinedIcon className={classes.iconTab}/>}/>
                     <Tab classes={{selected:classes.tabSelected,wrapper:classes.wrapper,root:classes.tabRoot}} label="Book" {...a11yProps(3)} icon={<BookOutlinedIcon className={classes.iconTab}/>} />
@@ -108,7 +122,6 @@ export default function ScrollableTabsButtonAuto() {
                 </Tabs>
             </AppBar>
             <Appbar value={value} index={0}>
-
                 <Content/>
             </Appbar>
             <Appbar value={value} index={1}>
